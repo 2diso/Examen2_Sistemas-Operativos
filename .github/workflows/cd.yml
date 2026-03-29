@@ -1,0 +1,21 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy
+        run: echo "Deploy ejecutado"
+
+      - name: Usando secrets
+        run: echo "Token ${{ secrets.API_TOKEN }}"
+      - name: Segundo secrets
+        run: echo "Key ${{ secrets.DEPLOY_KEY }}"
